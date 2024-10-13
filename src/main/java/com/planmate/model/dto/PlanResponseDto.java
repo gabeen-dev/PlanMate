@@ -1,5 +1,16 @@
 package com.planmate.model.dto;
 
-public class PlanResponseDto {
+import lombok.Builder;
+import lombok.Getter;
 
+@Getter
+@Builder
+public class PlanResponseDto {
+    private Long planId;
+
+    private String username;
+
+    private String title;
+
+    private String content;
 }
