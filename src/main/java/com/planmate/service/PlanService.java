@@ -25,7 +25,10 @@ public class PlanService {
     }
 
     public PlanResponseDto createPlan(PlanRequestDto planRequestDto) {
-        return null;
+        Plan plan = planRequestDto.toEntity();
+        Plan savedPlan = planRepository.save(plan);
+        PlanResponseDto saveDto = savedPlan.toDto();
+        return saveDto;
     }
 
     public PlanResponseDto updatePlan(Long planId, PlanRequestDto planRequestDto) {
@@ -35,6 +38,4 @@ public class PlanService {
     public void deletePlan(Long planId) {
 
     }
-
-
 }
