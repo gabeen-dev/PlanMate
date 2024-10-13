@@ -5,7 +5,7 @@ import com.planmate.model.dto.PlanResponseDto;
 import com.planmate.service.PlanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,29 +15,32 @@ public class PlanController {
 
     // TODO : c, r, u, d
     // 일정조회(다건)
-    public Page<PlanResponseDto> searchPlan(PlanRequestDto planRequestDto) {
+    @GetMapping("/api/plan/search")
+    public Page<PlanResponseDto> searchPlan(@RequestBody PlanRequestDto planRequestDto) {
         return planService.searchPlan(planRequestDto);
     }
 
     //일정조회(단건)
-    public PlanResponseDto getPlan(Long planId) {
+    @GetMapping("/api/plan/{plan-id}")
+    public PlanResponseDto getPlan(@PathVariable("plan-id") Long planId) {
         return planService.getPlan(planId);
     }
 
     //일정 생성
-    public PlanResponseDto createPlan(PlanRequestDto planRequestDto) {
+    @PostMapping("/api/plan")
+    public PlanResponseDto createPlan(@RequestBody PlanRequestDto planRequestDto) {
         return planService.createPlan(planRequestDto);
     }
 
     //일정 수정
-    public PlanResponseDto updatePlan(Long planId, PlanRequestDto planRequestDto) {
+    @PatchMapping("/api/plan/{plan-id}")
+    public PlanResponseDto updatePlan(@PathVariable("plan-id") Long planId, @RequestBody PlanRequestDto planRequestDto) {
         return planService.updatePlan(planId, planRequestDto);
     }
 
     //일정 삭제
-    public void deletePlan(Long planId) {
+    @DeleteMapping("api/plan/{plan-id}")
+    public void deletePlan(@PathVariable("plan-id") Long planId) {
         planService.deletePlan(planId);
     }
-
-
 }
