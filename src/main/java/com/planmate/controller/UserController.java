@@ -12,23 +12,23 @@ public class UserController {
 
     private final UserService userService;
 
-    //유저조회
-    public UserResponseDto searchUser(Long UserId) {
-        return null;
+    //유저조회(단건)
+    public UserResponseDto searchUser(Long userId) {
+        return userService.getUser(userId);
     }
 
     //유저생성
     public UserResponseDto createUser(UserRequestDto userRequestDto) {
-        return null;
+        return userService.createUser(userRequestDto);
     }
 
     //유저수정
-    public UserResponseDto updateUser(UserRequestDto userRequestDto) {
-        return null;
+    public UserResponseDto updateUser(Long userId, UserRequestDto userRequestDto) {
+        return userService.updateUser(userId, userRequestDto);
     }
 
     //유저삭제
-    public void deleteUser(Long UserId) {
-
+    public void deleteUser(Long userId) {
+        userService.deleteUser(userId);
     }
 }
