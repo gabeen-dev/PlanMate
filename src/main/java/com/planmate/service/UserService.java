@@ -23,7 +23,10 @@ public class UserService {
 
     //생성
     public UserResponseDto createUser(UserRequestDto userRequestDto) {
-        return null;
+        User user = userRequestDto.toEntity();
+        User savedUser = userRepository.save(user);
+        UserResponseDto userResponseDto = savedUser.toDto();
+        return userResponseDto;
     }
 
     //수정
