@@ -26,7 +26,7 @@ public class UserController {
 
     //유저수정
     @PatchMapping("/api/user/{user-id}")
-    public UserResponseDto updateUser(@PathVariable("user-id") Long userId,@RequestBody UserRequestDto userRequestDto) {
+    public UserResponseDto updateUser(@PathVariable("user-id") Long userId, @RequestBody UserRequestDto userRequestDto) {
         return userService.updateUser(userId, userRequestDto);
     }
 

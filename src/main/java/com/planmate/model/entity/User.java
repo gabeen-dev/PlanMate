@@ -1,5 +1,6 @@
 package com.planmate.model.entity;
 
+import com.planmate.model.dto.UserResponseDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,4 +31,12 @@ public class User {
 
     @Column
     private LocalDateTime updateDate;
+
+    public UserResponseDto toDto() {
+        return UserResponseDto.builder()
+                .username(username)
+                .password(password)
+                .userMail(userMail)
+                .build();
+    }
 }

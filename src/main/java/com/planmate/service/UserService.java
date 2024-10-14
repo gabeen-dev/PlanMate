@@ -2,6 +2,7 @@ package com.planmate.service;
 
 import com.planmate.model.dto.UserRequestDto;
 import com.planmate.model.dto.UserResponseDto;
+import com.planmate.model.entity.User;
 import com.planmate.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -10,12 +11,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService {
 
-    //TODO : repasitory 필드
+    private final UserRepository userRepository;
 
     //TODO: C, R, U, D
     //조회(단건)
     public UserResponseDto getUser(Long userId) {
-        return null;
+        User findUser = userRepository.findById(userId).get();
+        UserResponseDto userResponseDto = findUser.toDto();
+        return userResponseDto;
     }
 
     //생성
