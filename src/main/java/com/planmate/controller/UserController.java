@@ -4,7 +4,7 @@ import com.planmate.model.dto.UserRequestDto;
 import com.planmate.model.dto.UserResponseDto;
 import com.planmate.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -13,22 +13,26 @@ public class UserController {
     private final UserService userService;
 
     //유저조회(단건)
-    public UserResponseDto searchUser(Long userId) {
+    @GetMapping("/api/user/{user-id}")
+    public UserResponseDto searchUser(@PathVariable("user-id") Long userId) {
         return userService.getUser(userId);
     }
 
     //유저생성
-    public UserResponseDto createUser(UserRequestDto userRequestDto) {
+    @PostMapping("/api/user/")
+    public UserResponseDto createUser(@RequestBody UserRequestDto userRequestDto) {
         return userService.createUser(userRequestDto);
     }
 
     //유저수정
-    public UserResponseDto updateUser(Long userId, UserRequestDto userRequestDto) {
+    @PatchMapping("/api/user/{user-id}")
+    public UserResponseDto updateUser(@PathVariable("user-id") Long userId,@RequestBody UserRequestDto userRequestDto) {
         return userService.updateUser(userId, userRequestDto);
     }
 
     //유저삭제
-    public void deleteUser(Long userId) {
+    @DeleteMapping("/api/user/")
+    public void deleteUser(@PathVariable Long userId) {
         userService.deleteUser(userId);
     }
 }
