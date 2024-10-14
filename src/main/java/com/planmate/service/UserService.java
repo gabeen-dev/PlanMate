@@ -30,8 +30,11 @@ public class UserService {
     }
 
     //수정
-    public UserResponseDto updateUser(Long userId, UserRequestDto userRequestDto) {
-        return null;
+    public UserResponseDto updateUser(Long userId, UserRequestDto userRequestDto){
+        User findUser = userRepository.findById(userId).get();
+        findUser.updateUser(userRequestDto);
+        UserResponseDto userResponseDto = findUser.toDto();
+        return userResponseDto;
     }
 
     //삭제

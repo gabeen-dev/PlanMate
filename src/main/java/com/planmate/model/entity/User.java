@@ -1,5 +1,6 @@
 package com.planmate.model.entity;
 
+import com.planmate.model.dto.UserRequestDto;
 import com.planmate.model.dto.UserResponseDto;
 import jakarta.persistence.*;
 import lombok.*;
@@ -38,5 +39,16 @@ public class User {
                 .password(password)
                 .userMail(userMail)
                 .build();
+    }
+
+    public void updateUser(UserRequestDto userRequestDto) {
+        updateDate = LocalDateTime.now();
+
+        if (userRequestDto.getPassword() != null) {
+            this.password = userRequestDto.getPassword();
+        }
+        if (userRequestDto.getUsername() != null) {
+            this.username = userRequestDto.getUsername();
+        }
     }
 }
