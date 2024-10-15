@@ -3,19 +3,23 @@ package com.planmate.service;
 import com.planmate.model.dto.CommentRequestDto;
 import com.planmate.model.dto.CommentResponseDto;
 import com.planmate.model.dto.UserResponseDto;
+import com.planmate.model.entity.Comment;
+import com.planmate.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class CommentService {
+    private final CommentRepository commentRepository;
 
     //TODO: repository
 
     //댓글 조회
     public CommentResponseDto getComment(Long commentId) {
-
-        return null;
+        Comment findComment = commentRepository.findById(commentId).get();
+        CommentResponseDto findDto = findComment.toDto();
+        return findDto;
     }
 
     //댓글 생성
