@@ -24,7 +24,10 @@ public class CommentService {
 
     //댓글 생성
     public CommentResponseDto createComment(CommentRequestDto commentRequestDto) {
-        return null;
+        Comment comment = commentRequestDto.toEntity();
+        Comment savedComment = commentRepository.save(comment);
+        CommentResponseDto findDto = savedComment.toDto();
+        return findDto;
     }
 
     //댓글 수정
