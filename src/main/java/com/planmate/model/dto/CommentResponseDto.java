@@ -11,7 +11,7 @@ public class CommentResponseDto {
 
     private Long commentId;
 
-    private String comment;
+    private String content;
 
     private String username;
 
