@@ -5,7 +5,7 @@ import com.planmate.model.dto.CommentResponseDto;
 import com.planmate.service.CommentSercvice;
 import com.planmate.service.PlanService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -15,22 +15,26 @@ public class CommentController {
 
     //TODO : comment CRUD
     //댓글 조회
-    public CommentResponseDto getComment(Long commentId) {
+    @GetMapping("/api/comment/{plan-id}")
+    public CommentResponseDto getComment(@PathVariable("plan-id") Long commentId) {
         return commentSercvice.getComment(commentId);
     }
 
     //댓글 생성
-    public CommentResponseDto createComment(CommentRequestDto commentRequestDto) {
+    @PostMapping("/api/comment/")
+    public CommentResponseDto createComment(@RequestBody CommentRequestDto commentRequestDto) {
         return commentSercvice.createComment(commentRequestDto);
     }
 
     //댓글 수정
-    public CommentResponseDto updateComment(Long commentId, CommentRequestDto commentRequestDto) {
+    @PatchMapping("/api/comment/{plan-id}")
+    public CommentResponseDto updateComment(@PathVariable("plan-id") Long commentId, @RequestBody CommentRequestDto commentRequestDto) {
         return commentSercvice.updateComment(commentId, commentRequestDto);
     }
 
     //댓글 삭제
-    public void deleteComment(Long commentId) {
+    @DeleteMapping("/api/comment/{plan-id}")
+    public void deleteComment(@PathVariable("plan-id") Long commentId) {
         commentSercvice.deleteComment(commentId);
     }
 }
