@@ -16,21 +16,21 @@ public class CommentController {
     //TODO : comment CRUD
     //댓글 조회
     public CommentResponseDto getComment(Long commentId) {
-        return null;
+        return commentSercvice.getComment(commentId);
     }
 
     //댓글 생성
     public CommentResponseDto createComment(CommentRequestDto commentRequestDto) {
-        return null;
+        return commentSercvice.createComment(commentRequestDto);
     }
 
     //댓글 수정
     public CommentResponseDto updateComment(Long commentId, CommentRequestDto commentRequestDto) {
-        return null;
+        return commentSercvice.updateComment(commentId, commentRequestDto);
     }
 
     //댓글 삭제
     public void deleteComment(Long commentId) {
-
+        commentSercvice.deleteComment(commentId);
     }
 }
