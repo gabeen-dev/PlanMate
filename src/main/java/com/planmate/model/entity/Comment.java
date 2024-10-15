@@ -1,5 +1,6 @@
 package com.planmate.model.entity;
 
+import com.planmate.model.dto.CommentRequestDto;
 import com.planmate.model.dto.CommentResponseDto;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -43,5 +44,16 @@ public class Comment {
                 .commentId(commentId)
                 .updateDate(updateDate)
                 .build();
+    }
+
+    public void updateComment(CommentRequestDto commentRequestDto) {
+        updateDate = LocalDateTime.now();
+
+        if (commentRequestDto.getContent() != null) {
+            comment = commentRequestDto.getContent();
+        }
+        if (commentRequestDto.getUsername() != null) {
+            username = commentRequestDto.getUsername();
+        }
     }
 }

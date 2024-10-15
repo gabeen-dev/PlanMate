@@ -32,7 +32,10 @@ public class CommentService {
 
     //댓글 수정
     public CommentResponseDto updateComment(Long commentId, CommentRequestDto commentRequestDto) {
-        return null;
+        Comment comment = commentRepository.findById(commentId).get();
+        comment.updateComment(commentRequestDto);
+        Comment updatedComment = commentRepository.save(comment);
+        return updatedComment.toDto();
     }
 
     //댓글 삭제
