@@ -8,9 +8,9 @@ import lombok.Getter;
 @Builder
 public class UserResponseDto {
 
-    private String username;
+    private Long userId;
 
-    private String password;
+    private String username;
 
     private String userMail;
 }

@@ -35,8 +35,8 @@ public class User {
 
     public UserResponseDto toDto() {
         return UserResponseDto.builder()
+                .userId(userid)
                 .username(username)
-                .password(password)
                 .userMail(userMail)
                 .build();
     }
