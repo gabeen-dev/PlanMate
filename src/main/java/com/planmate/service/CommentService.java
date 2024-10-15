@@ -8,12 +8,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class CommentSercvice {
+public class CommentService {
 
     //TODO: repository
 
     //댓글 조회
     public CommentResponseDto getComment(Long commentId) {
+
         return null;
     }
 
