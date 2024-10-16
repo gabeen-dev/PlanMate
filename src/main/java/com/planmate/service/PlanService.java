@@ -4,8 +4,10 @@ import com.planmate.model.dto.PlanRequestDto;
 import com.planmate.model.dto.PlanResponseDto;
 import com.planmate.model.entity.Plan;
 import com.planmate.repository.PlanRepository;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,8 +16,10 @@ public class PlanService {
 
     private final PlanRepository planRepository;
 
-    public Page<PlanResponseDto> searchPlan(PlanRequestDto planRequestDto) {
-        return null;
+    public Page<PlanResponseDto> searchPlan(Pageable pageable) {
+        Page<Plan> plans = planRepository.findAll(pageable);
+        Page<PlanResponseDto> map =  plans.map(Plan::toDto);
+        return map;
     }
 
     public PlanResponseDto getPlan(Long planId) {

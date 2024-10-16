@@ -1,7 +1,6 @@
 package com.planmate.model.dto;
 
 import com.planmate.model.entity.Plan;
-import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Getter;
 

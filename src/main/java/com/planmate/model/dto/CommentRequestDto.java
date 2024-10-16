@@ -1,7 +1,6 @@
 package com.planmate.model.dto;
 
 import com.planmate.model.entity.Comment;
-import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
