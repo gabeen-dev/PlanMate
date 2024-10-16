@@ -3,6 +3,7 @@ package com.planmate.controller;
 import com.planmate.model.dto.UserRequestDto;
 import com.planmate.model.dto.UserResponseDto;
 import com.planmate.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class UserController {
 
     //유저생성
     @PostMapping("/api/user/")
-    public UserResponseDto createUser(@RequestBody UserRequestDto userRequestDto) {
+    public UserResponseDto createUser(@Valid @RequestBody UserRequestDto userRequestDto) {
         return userService.createUser(userRequestDto);
     }
 
