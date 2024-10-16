@@ -2,10 +2,7 @@ package com.planmate.model.entity;
 
 import com.planmate.model.dto.CommentRequestDto;
 import com.planmate.model.dto.CommentResponseDto;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,6 +21,14 @@ public class Comment {
     @Id
     @GeneratedValue
     private Long commentId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "plan_id")
+    private Plan plan;
 
     @Column
     private String comment;
