@@ -30,7 +30,7 @@ public class Comment {
     @JoinColumn(name = "plan_id")
     private Plan plan;
 
-    @Column
+    @Column(name = "comment_content")
     private String comment;
 
     @Column
