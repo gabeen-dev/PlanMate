@@ -2,7 +2,7 @@ package com.planmate.service;
 
 import com.planmate.model.dto.UserRequestDto;
 import com.planmate.model.dto.UserResponseDto;
-import com.planmate.model.entity.User;
+import com.planmate.model.entity.Users;
 import com.planmate.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,24 +16,24 @@ public class UserService {
     //TODO: C, R, U, D
     //조회(단건)
     public UserResponseDto getUser(Long userId) {
-        User findUser = userRepository.findById(userId).get();
-        UserResponseDto userResponseDto = findUser.toDto();
+        Users findUsers = userRepository.findById(userId).get();
+        UserResponseDto userResponseDto = findUsers.toDto();
         return userResponseDto;
     }
 
     //생성
     public UserResponseDto createUser(UserRequestDto userRequestDto) {
-        User user = userRequestDto.toEntity();
-        User savedUser = userRepository.save(user);
-        UserResponseDto userResponseDto = savedUser.toDto();
+        Users users = userRequestDto.toEntity();
+        Users savedUsers = userRepository.save(users);
+        UserResponseDto userResponseDto = savedUsers.toDto();
         return userResponseDto;
     }
 
     //수정
     public UserResponseDto updateUser(Long userId, UserRequestDto userRequestDto){
-        User findUser = userRepository.findById(userId).get();
-        findUser.updateUser(userRequestDto);
-        UserResponseDto userResponseDto = findUser.toDto();
+        Users findUsers = userRepository.findById(userId).get();
+        findUsers.updateUser(userRequestDto);
+        UserResponseDto userResponseDto = findUsers.toDto();
         return userResponseDto;
     }
 
