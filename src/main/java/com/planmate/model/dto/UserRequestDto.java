@@ -1,7 +1,6 @@
 package com.planmate.model.dto;
 
-import com.planmate.model.entity.User;
-import jakarta.persistence.Column;
+import com.planmate.model.entity.Users;
 import jakarta.validation.constraints.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,16 +21,14 @@ public class UserRequestDto {
     @Email
     private String userMail;
 
-    @NotEmpty
-    private LocalDateTime createDate;
 
-    public User toEntity() {
-        User user = User.builder()
+    public Users toEntity() {
+        Users users = Users.builder()
                 .username(username)
                 .password(password)
                 .userMail(userMail)
-                .createDate(createDate)
+                .createDate(LocalDateTime.now())
                 .build();
-        return user;
+        return users;
     }
 }
