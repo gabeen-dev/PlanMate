@@ -30,7 +30,7 @@ public class UserService {
     }
 
     //수정
-    public UserResponseDto updateUser(Long userId, UserRequestDto userRequestDto){
+    public UserResponseDto updateUser(Long userId, UserRequestDto userRequestDto) {
         Users findUsers = userRepository.findById(userId).get();
         findUsers.updateUser(userRequestDto);
         UserResponseDto userResponseDto = findUsers.toDto();

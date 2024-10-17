@@ -18,7 +18,7 @@ public class PlanService {
 
     public Page<PlanResponseDto> searchPlan(Pageable pageable) {
         Page<Plan> plans = planRepository.findAll(pageable);
-        Page<PlanResponseDto> map =  plans.map(Plan::toDto);
+        Page<PlanResponseDto> map = plans.map(Plan::toDto);
         return map;
     }
 

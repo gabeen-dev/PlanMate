@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 public class UserRequestDto {
 
-    @Size(min=2,max = 10, message = "{글자를 2이상 10이하로 작성하세요.}")
+    @Size(min = 2, max = 10, message = "{글자를 2이상 10이하로 작성하세요.}")
     private String username;
 
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$",
