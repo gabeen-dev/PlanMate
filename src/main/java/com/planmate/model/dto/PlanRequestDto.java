@@ -21,7 +21,6 @@ public class PlanRequestDto {
                 .username(username)
                 .title(title)
                 .content(content)
-                .createDate(LocalDateTime.now())
                 .build();
         return plan;
     }

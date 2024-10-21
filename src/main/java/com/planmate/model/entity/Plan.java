@@ -14,7 +14,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Plan {
+public class Plan extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,11 +36,6 @@ public class Plan {
     @Column
     private String content;
 
-    @Column
-    private LocalDateTime createDate;
-
-    @Column
-    private LocalDateTime updateDate;
 
     public PlanResponseDto toDto() {
         return PlanResponseDto.builder()
@@ -52,7 +47,6 @@ public class Plan {
     }
 
     public void updatePlan(PlanRequestDto planRequestDto) {
-        updateDate = LocalDateTime.now();
 
         if (planRequestDto.getUsername() != null) {
             this.username = planRequestDto.getUsername();
