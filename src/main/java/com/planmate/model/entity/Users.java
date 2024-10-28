@@ -36,6 +36,9 @@ public class Users extends BaseEntity{
     private String userMail;
 
     @Column
+    private String role;
+
+    @Column
     private LocalDateTime createDate;
 
     @Column
