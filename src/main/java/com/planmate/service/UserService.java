@@ -1,5 +1,7 @@
 package com.planmate.service;
 
+import com.planmate.auth.JwtTokenProvider;
+import com.planmate.auth.filter.TokenInfo;
 import com.planmate.model.dto.UserRequestDto;
 import com.planmate.model.dto.UserResponseDto;
 import com.planmate.model.entity.Users;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final JwtTokenProvider jwtTokenProvider;
 
     //TODO: C, R, U, D
     //조회(단건)
@@ -39,5 +42,21 @@ public class UserService {
 
     //삭제
     public void deleteUser(Long userId) {
+    }
+
+    public UserResponseDto register(UserRequestDto userRequestDto) {
+        Users users = userRequestDto.toEntity();
+        Users save = userRepository.save(users);
+        return save.toDto();
+    }
+
+    public TokenInfo login(UserRequestDto userRequestDto) {
+        Users user = userRepository.findByUserMail(userRequestDto.getUserMail());
+        String token = jwtTokenProvider.createToken(user);
+        return TokenInfo.builder()
+                .email(user.getUserMail())
+                .token(token)
+                .build();
+
     }
 }
